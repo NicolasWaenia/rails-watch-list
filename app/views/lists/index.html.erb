@@ -1,47 +1,27 @@
-<!-- As a heading -->
-<nav class="navbar navbar-light bg-light" style="border: 1px solid #000000;">
-  <span class="navbar-brand mb-0 h1">
-  </span>
-  <%= link_to new_list_path, class: "nav-link" do %>
-    New list
-  <% end %>
-</nav>
-
-
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path("cinema") %>');">
   <div class="container">
     <h1 class="text-center">Save any kind of movies classic</h1>
   </div>
 </div>
 
-
 <div class="container mt-5">
   <h1 class="text-center mb-4">My lists</h1>
   <div class="row">
     <% @lists.each do |list| %>
-      <div class="col-md-4">
-        <div class="card mb-4 text-white" style="background-image: url('');"> .
-          <div class="card-body">
-            <a href="<%= list_path(list) %>" class="list-group-item list-group-item-action">
-              <h2 class="mb-1 text-success"><%= list.name %></h2>
+      <div class="col-md-4 mb-4">
+        <div class="card" <% if list.photo.attached? %>
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, crop: :fill %>'); height: 150px; width: 100%; background-size: cover; background-position: center;"
+          <% else %> style="background-color: #888; height: 150px; width: 100%;" <% end %>>
+          <div class="card-body position-relative">
+            <a href="<%= list_path(list) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?" class="text-light position-absolute top-0 end-0 mt-2 me-2">
+              <i class="fa-solid fa-trash"></i>
             </a>
-            <%= link_to "Delete this list", list_path(list), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm mt-2" %>
+            <a href="<%= list_path(list) %>" class="list-group-item list-group-item-action">
+              <h2 class="mb-1 text-light text-center"><%= list.name %></h2>
+            </a>
           </div>
         </div>
       </div>
     <% end %>
-
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body text-center">
-          <h5 class="card-title">Add a List</h5>
-          <%= link_to new_list_path, class: "btn btn-primary btn-sm mt-2" do %>
-            Add
-          <% end %>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>

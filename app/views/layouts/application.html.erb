@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RailsWatchList</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<head>
+  <title>RailsWatchList</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-  <div class="container">
-  <div class="row">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+<nav class="navbar navbar-light bg-light" style="border: 1px solid #000000;">
+  <span class="navbar-brand mb-0 h1"></span>
+
+  <div class="d-flex">
+    <%= link_to new_list_path, class: "nav-link new-list" do %>
+      New list
+    <% end %>
+    <%= link_to "Return to lists", lists_path, class: "nav-link new-list" %>
+  </div>
+</nav>
+
   <%= yield %>
-  </div>
-  </div>
-  </body>
+
+</body>
+
 </html>
