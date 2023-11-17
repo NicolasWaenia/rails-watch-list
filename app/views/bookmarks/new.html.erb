@@ -1,0 +1,7 @@
+<div class="form">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment, placeholder: 'Add a comment here' %>
+    <%= f.association :movie %>
+    <%= f.submit 'Add a movie', class: 'btn w-100 btn-outline-primary' %>
+  <% end %>
+</div>

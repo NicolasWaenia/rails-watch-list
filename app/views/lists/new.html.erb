@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header list-banner">
+      <h1>Create your list</h1>
+    </div>
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <%= simple_form_for(@list) do |f| %>
+              <div class="form-group">
+                <%= f.input :name, class: "form-control", placeholder: 'Add a list name' %>
+              </div>
+              <%= f.submit "Create", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
